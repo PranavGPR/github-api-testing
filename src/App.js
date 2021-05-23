@@ -16,10 +16,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <p>{data.login}</p>
+      <p>Name: {data.login}</p>
+      <p>Repos: {data.public_repos}</p>
       <a href={data.html_url} target="_blank" rel="noreferrer">
         <img src={data.avatar_url} alt="img" />
       </a>
+      <p>{data.bio}</p>
     </div>
   );
 }
