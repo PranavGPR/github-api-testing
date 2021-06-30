@@ -3,15 +3,12 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   text-align: center;
   background-color: #061018;
-  height: 100vh;
-  overflow: hidden;
   padding: 2rem;
 }
 
 img {
   width: 15rem;
   border-radius: 10%;
-  opacity: 75%;
 }
 
 img:hover {

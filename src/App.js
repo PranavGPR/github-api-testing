@@ -3,6 +3,7 @@ import "./styles.css";
 
 export default function App() {
   const [data, setData] = useState({});
+  const [repos, setRepos] = useState([]);
 
   const getUser = async () => {
     const res = await fetch("https://api.github.com/users/pranavgpr");
@@ -10,18 +11,39 @@ export default function App() {
     setData(data);
   };
 
+  const getRepos = async () => {
+    const result = await fetch("https://api.github.com/users/PranavGPR/repos");
+    const repos = await result.json();
+    setRepos(repos);
+  };
+
   useEffect(() => {
     getUser();
+    getRepos();
   }, []);
 
   return (
     <div className="App">
       <p>Name: {data.login}</p>
       <p>Repos: {data.public_repos}</p>
+      <p>Followers: {data.followers}</p>
+      <p>Following: {data.following}</p>
       <a href={data.html_url} target="_blank" rel="noreferrer">
         <img src={data.avatar_url} alt="img" />
       </a>
       <p>{data.bio}</p>
+      <strong
+        style={{
+          color: "whitesmoke",
+          fontSize: "2rem",
+          textDecoration: "underline"
+        }}
+      >
+        Repositories:
+      </strong>
+      {repos.map((v) => {
+        return <p>{v.name}</p>;
+      })}
     </div>
   );
 }
